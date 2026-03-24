@@ -37,9 +37,12 @@
             // 
             // dgvCuenta
             // 
+            dgvCuenta.AllowUserToAddRows = false;
+            dgvCuenta.AllowUserToDeleteRows = false;
             dgvCuenta.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCuenta.Location = new Point(105, 25);
             dgvCuenta.Name = "dgvCuenta";
+            dgvCuenta.ReadOnly = true;
             dgvCuenta.RowHeadersWidth = 51;
             dgvCuenta.Size = new Size(404, 73);
             dgvCuenta.TabIndex = 0;

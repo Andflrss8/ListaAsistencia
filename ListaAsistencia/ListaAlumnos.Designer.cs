@@ -31,15 +31,15 @@
             msOpciones = new MenuStrip();
             archivoToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
-            alumnosToolStripMenuItem = new ToolStripMenuItem();
             asistenciaToolStripMenuItem = new ToolStripMenuItem();
-            actualizarToolStripMenuItem = new ToolStripMenuItem();
             splitContainer1 = new SplitContainer();
             dgvAlumnos = new DataGridView();
             btnEliminar = new Button();
             txtBuscar = new TextBox();
             label1 = new Label();
             btnAgregarAlumnos = new Button();
+            btnImportar = new Button();
+            ofdExcel = new OpenFileDialog();
             msOpciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -51,7 +51,7 @@
             // msOpciones
             // 
             msOpciones.ImageScalingSize = new Size(20, 20);
-            msOpciones.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, alumnosToolStripMenuItem, asistenciaToolStripMenuItem, actualizarToolStripMenuItem });
+            msOpciones.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, asistenciaToolStripMenuItem });
             msOpciones.Location = new Point(0, 0);
             msOpciones.Name = "msOpciones";
             msOpciones.Padding = new Padding(7, 3, 0, 3);
@@ -73,25 +73,12 @@
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
-            // alumnosToolStripMenuItem
-            // 
-            alumnosToolStripMenuItem.Name = "alumnosToolStripMenuItem";
-            alumnosToolStripMenuItem.Size = new Size(81, 24);
-            alumnosToolStripMenuItem.Text = "Alumnos";
-            // 
             // asistenciaToolStripMenuItem
             // 
             asistenciaToolStripMenuItem.Name = "asistenciaToolStripMenuItem";
             asistenciaToolStripMenuItem.Size = new Size(89, 24);
             asistenciaToolStripMenuItem.Text = "Asistencia";
             asistenciaToolStripMenuItem.Click += asistenciaToolStripMenuItem_Click;
-            // 
-            // actualizarToolStripMenuItem
-            // 
-            actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
-            actualizarToolStripMenuItem.Size = new Size(128, 24);
-            actualizarToolStripMenuItem.Text = "Actualizar Tabla";
-            actualizarToolStripMenuItem.Click += actualizarToolStripMenuItem_Click;
             // 
             // splitContainer1
             // 
@@ -107,6 +94,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            splitContainer1.Panel2.Controls.Add(btnImportar);
             splitContainer1.Panel2.Controls.Add(btnEliminar);
             splitContainer1.Panel2.Controls.Add(txtBuscar);
             splitContainer1.Panel2.Controls.Add(label1);
@@ -118,11 +106,14 @@
             // 
             // dgvAlumnos
             // 
+            dgvAlumnos.AllowUserToAddRows = false;
+            dgvAlumnos.AllowUserToDeleteRows = false;
             dgvAlumnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAlumnos.Dock = DockStyle.Fill;
             dgvAlumnos.Location = new Point(0, 0);
             dgvAlumnos.Margin = new Padding(3, 4, 3, 4);
             dgvAlumnos.Name = "dgvAlumnos";
+            dgvAlumnos.ReadOnly = true;
             dgvAlumnos.RowHeadersWidth = 51;
             dgvAlumnos.Size = new Size(800, 316);
             dgvAlumnos.TabIndex = 0;
@@ -130,7 +121,7 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(582, 31);
+            btnEliminar.Location = new Point(498, 32);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(104, 39);
             btnEliminar.TabIndex = 3;
@@ -159,7 +150,7 @@
             // 
             // btnAgregarAlumnos
             // 
-            btnAgregarAlumnos.Location = new Point(437, 32);
+            btnAgregarAlumnos.Location = new Point(393, 31);
             btnAgregarAlumnos.Margin = new Padding(3, 4, 3, 4);
             btnAgregarAlumnos.Name = "btnAgregarAlumnos";
             btnAgregarAlumnos.Size = new Size(87, 39);
@@ -167,6 +158,20 @@
             btnAgregarAlumnos.Text = "Agregar";
             btnAgregarAlumnos.UseVisualStyleBackColor = true;
             btnAgregarAlumnos.Click += btnAgregarAlumnos_Click;
+            // 
+            // btnImportar
+            // 
+            btnImportar.Location = new Point(634, 32);
+            btnImportar.Name = "btnImportar";
+            btnImportar.Size = new Size(102, 36);
+            btnImportar.TabIndex = 4;
+            btnImportar.Text = "Importar";
+            btnImportar.UseVisualStyleBackColor = true;
+            btnImportar.Click += btnImportar_Click;
+            // 
+            // ofdExcel
+            // 
+            ofdExcel.FileName = "openFileDialog1";
             // 
             // ListaAlumnos
             // 
@@ -194,15 +199,15 @@
 
         private MenuStrip msOpciones;
         private ToolStripMenuItem archivoToolStripMenuItem;
-        private ToolStripMenuItem alumnosToolStripMenuItem;
         private ToolStripMenuItem asistenciaToolStripMenuItem;
         private SplitContainer splitContainer1;
         private DataGridView dgvAlumnos;
         private Button btnAgregarAlumnos;
         private TextBox txtBuscar;
         private Label label1;
-        private ToolStripMenuItem actualizarToolStripMenuItem;
         private ToolStripMenuItem salirToolStripMenuItem;
         private Button btnEliminar;
+        private Button btnImportar;
+        private OpenFileDialog ofdExcel;
     }
 }

@@ -69,7 +69,6 @@
             splitContainer1.Size = new Size(800, 450);
             splitContainer1.SplitterDistance = 172;
             splitContainer1.TabIndex = 0;
-            splitContainer1.SplitterMoved += splitContainer1_SplitterMoved;
             // 
             // label2
             // 
@@ -161,15 +160,18 @@
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(285, 27);
             dtpFecha.TabIndex = 0;
-            dtpFecha.Value = new DateTime(2026, 3, 23, 0, 0, 0, 0);
+            dtpFecha.Value = new DateTime(2026, 3, 24, 0, 0, 0, 0);
             dtpFecha.ValueChanged += dtpFecha_ValueChanged;
             // 
             // dgvAsistencia
             // 
+            dgvAsistencia.AllowUserToAddRows = false;
+            dgvAsistencia.AllowUserToDeleteRows = false;
             dgvAsistencia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAsistencia.Dock = DockStyle.Fill;
             dgvAsistencia.Location = new Point(0, 0);
             dgvAsistencia.Name = "dgvAsistencia";
+            dgvAsistencia.ReadOnly = true;
             dgvAsistencia.RowHeadersWidth = 51;
             dgvAsistencia.Size = new Size(800, 274);
             dgvAsistencia.TabIndex = 0;
@@ -183,6 +185,7 @@
             Controls.Add(splitContainer1);
             Name = "Asistencia";
             Text = "Asistencia";
+            Load += Asistencia_Load;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();
             splitContainer1.Panel2.ResumeLayout(false);

@@ -15,12 +15,14 @@ namespace ListaAsistencia.Views
         int nC = 0;
         bool update = false;
         Datos dt = new Datos();
-        public RegistroAlumno()
+        ListaAlumnos lista;
+        public RegistroAlumno(ListaAlumnos lista)
         {
             InitializeComponent();
+            this.lista = lista;
         }
 
-        public RegistroAlumno(int nC, string nombre, string apPat, string apMat)
+        public RegistroAlumno(int nC, string nombre, string apPat, string apMat, ListaAlumnos lista)
         {
             InitializeComponent();
             this.nC = nC;
@@ -30,6 +32,7 @@ namespace ListaAsistencia.Views
             txtMat.Text = apMat;
             update = true;
             txtNC.Enabled = false;
+            this.lista = lista;
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -50,6 +53,7 @@ namespace ListaAsistencia.Views
                     if (resultado)
                     {
                         MessageBox.Show("Alumno agregado correctamente");
+                        lista.actualizar();
                         this.Close();
                     }
                     else
@@ -66,6 +70,7 @@ namespace ListaAsistencia.Views
                     if (resultado)
                     {
                         MessageBox.Show("Alumno actualizado correctamente");
+                        lista.actualizar();
                         this.Close();
                     }
                     else

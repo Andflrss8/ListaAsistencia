@@ -17,19 +17,30 @@ namespace ListaAsistencia.Views
         DataGridView lista;
         public Asistencia(DataGridView lista)
         {
-            this.lista = lista;
-            InitializeComponent();
-            if (dgvAsistencia.RowCount == 0)
+            try
             {
-                dgvAsistencia.RowCount = lista.RowCount;
-                for (int i = 0; i < dgvAsistencia.RowCount - 1; i++)
+                
+                this.lista = lista;
+                InitializeComponent();
+                actualizar();
+                if (dgvAsistencia.RowCount == 0)
                 {
-                    dt.ejecutarComando($"Insert into Asistencia(fecha,nControl,vino) values(" +
-                        $"'{dtpFecha.Value.ToShortDateString()}', {lista.Rows[i].Cells[0].Value}, 'NO')");
-                }
 
+
+                    for (int i = 0; i < lista.Rows.Count; i++)
+                    {
+                        dt.ejecutarComando($"Insert into Asistencia(fecha,nControl,vino) values(" +
+                            $"'{dtpFecha.Value.ToShortDateString()}', {lista.Rows[i].Cells[0].Value}, 'NO')");
+                    }
+
+                    actualizar();
+                }
+                actualizar();
             }
-            actualizar();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Debe haber registros de alumnos para generar lista de asistencia" + ex.ToString());
+            }
         }
 
         public void actualizar()
@@ -54,10 +65,7 @@ namespace ListaAsistencia.Views
             }
         }
 
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
-        {
 
-        }
 
         private void dtpFecha_ValueChanged(object sender, EventArgs e)
         {
@@ -65,12 +73,13 @@ namespace ListaAsistencia.Views
             if (dgvAsistencia.RowCount == 0 || dgvAsistencia.Rows[0].Cells[0].Value == null)
             {
 
-                for (int i = 0; i < lista.RowCount - 1; i++)
+                for (int i = 0; i < lista.RowCount; i++)
                 {
 
                     dt.ejecutarComando($"Insert into Asistencia(fecha,nControl,vino) values(" +
                         $"'{dtpFecha.Value.ToShortDateString()}', {lista.Rows[i].Cells[0].Value}, 'NO')");
                 }
+                dgvAsistencia.Columns.Clear();
                 actualizar();
             }
 
@@ -158,10 +167,16 @@ namespace ListaAsistencia.Views
             {
                 Reporte reporte = new Reporte(int.Parse(txtRegistro.Text));
                 reporte.Show();
-            }catch(Exception ex)
-            { 
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show("Solo valores numericos");
             }
+        }
+
+        private void Asistencia_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
