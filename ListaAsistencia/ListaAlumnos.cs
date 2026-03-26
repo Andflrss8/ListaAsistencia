@@ -113,6 +113,9 @@ namespace ListaAsistencia
             DialogResult dr = ofdExcel.ShowDialog();
             if (dr == DialogResult.OK)
             {
+
+                datos.ejecutarComando("delete from Alumnos");
+                actualizar();
                 path = ofdExcel.FileName;
                 ExcelPackage.License.SetNonCommercialPersonal("Andres Flores");
                 using (var package = new ExcelPackage(new FileInfo(path)))
@@ -125,7 +128,7 @@ namespace ListaAsistencia
                     {
                         dt.Columns.Add(worksheet.Cells[1, col].Value.ToString());
                     }
-                    for (int row = 2; row <= rowCount; row++)
+                    for (int row = 2; row <= rowCount - 1; row++)
                     {
                         DataRow drNew = dt.NewRow();
                         for (int col = 1; col <= colCount; col++)
@@ -139,9 +142,12 @@ namespace ListaAsistencia
                         datos.ejecutarComando(comando);
                     }
                 }
+                actualizar();
 
             }
 
         }
+
+        
     }
 }

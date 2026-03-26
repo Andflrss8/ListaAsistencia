@@ -19,6 +19,7 @@ namespace ListaAsistencia.Views
         {
             InitializeComponent();
             this.nControl = nControl;
+            
         }
 
         private void Reporte_Load(object sender, EventArgs e)
@@ -37,6 +38,11 @@ namespace ListaAsistencia.Views
                 {
                     dgvResumen.DataSource = ds.Tables[0];
 
+                }
+
+                if (dgvResumen.Rows[0].Cells[0].Value == null)
+                {
+                    this.Close();
                 }
             }catch(Exception ex)
             {

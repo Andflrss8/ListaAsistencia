@@ -30,7 +30,6 @@
         {
             splitContainer1 = new SplitContainer();
             label2 = new Label();
-            btnRegistro = new Button();
             txtRegistro = new TextBox();
             gbBotones = new GroupBox();
             rbTodos = new RadioButton();
@@ -39,6 +38,7 @@
             label1 = new Label();
             dtpFecha = new DateTimePicker();
             dgvAsistencia = new DataGridView();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -56,8 +56,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            splitContainer1.Panel1.Controls.Add(label3);
             splitContainer1.Panel1.Controls.Add(label2);
-            splitContainer1.Panel1.Controls.Add(btnRegistro);
             splitContainer1.Panel1.Controls.Add(txtRegistro);
             splitContainer1.Panel1.Controls.Add(gbBotones);
             splitContainer1.Panel1.Controls.Add(label1);
@@ -80,29 +80,20 @@
             label2.TabIndex = 5;
             label2.Text = "(Solo numero de control)";
             // 
-            // btnRegistro
-            // 
-            btnRegistro.Location = new Point(348, 111);
-            btnRegistro.Name = "btnRegistro";
-            btnRegistro.Size = new Size(155, 29);
-            btnRegistro.TabIndex = 4;
-            btnRegistro.Text = "Obtener reporte";
-            btnRegistro.UseVisualStyleBackColor = true;
-            btnRegistro.Click += btnRegistro_Click;
-            // 
             // txtRegistro
             // 
             txtRegistro.Location = new Point(51, 111);
             txtRegistro.Name = "txtRegistro";
             txtRegistro.Size = new Size(274, 27);
             txtRegistro.TabIndex = 3;
+            txtRegistro.KeyPress += txtRegistro_KeyPress;
             // 
             // gbBotones
             // 
             gbBotones.Controls.Add(rbTodos);
             gbBotones.Controls.Add(rbNoAsistio);
             gbBotones.Controls.Add(rbAsistio);
-            gbBotones.Location = new Point(380, 24);
+            gbBotones.Location = new Point(384, 46);
             gbBotones.Name = "gbBotones";
             gbBotones.Size = new Size(377, 80);
             gbBotones.TabIndex = 2;
@@ -112,7 +103,7 @@
             // rbTodos
             // 
             rbTodos.AutoSize = true;
-            rbTodos.Location = new Point(239, 26);
+            rbTodos.Location = new Point(243, 26);
             rbTodos.Name = "rbTodos";
             rbTodos.Size = new Size(70, 24);
             rbTodos.TabIndex = 2;
@@ -156,11 +147,11 @@
             // 
             // dtpFecha
             // 
+            dtpFecha.Checked = false;
             dtpFecha.Location = new Point(40, 46);
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(285, 27);
             dtpFecha.TabIndex = 0;
-            dtpFecha.Value = new DateTime(2026, 3, 24, 0, 0, 0, 0);
             dtpFecha.ValueChanged += dtpFecha_ValueChanged;
             // 
             // dgvAsistencia
@@ -176,6 +167,15 @@
             dgvAsistencia.Size = new Size(800, 274);
             dgvAsistencia.TabIndex = 0;
             dgvAsistencia.CellContentDoubleClick += dgvAsistencia_CellContentDoubleClick;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(51, 88);
+            label3.Name = "label3";
+            label3.Size = new Size(201, 20);
+            label3.TabIndex = 6;
+            label3.Text = "Obtener resumen de alumno:";
             // 
             // Asistencia
             // 
@@ -208,7 +208,7 @@
         private RadioButton rbNoAsistio;
         private RadioButton rbAsistio;
         private Label label2;
-        private Button btnRegistro;
         private TextBox txtRegistro;
+        private Label label3;
     }
 }

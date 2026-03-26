@@ -34,11 +34,11 @@
             asistenciaToolStripMenuItem = new ToolStripMenuItem();
             splitContainer1 = new SplitContainer();
             dgvAlumnos = new DataGridView();
+            btnImportar = new Button();
             btnEliminar = new Button();
             txtBuscar = new TextBox();
             label1 = new Label();
             btnAgregarAlumnos = new Button();
-            btnImportar = new Button();
             ofdExcel = new OpenFileDialog();
             msOpciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -91,6 +91,7 @@
             // splitContainer1.Panel1
             // 
             splitContainer1.Panel1.Controls.Add(dgvAlumnos);
+          
             // 
             // splitContainer1.Panel2
             // 
@@ -118,6 +119,16 @@
             dgvAlumnos.Size = new Size(800, 316);
             dgvAlumnos.TabIndex = 0;
             dgvAlumnos.CellContentDoubleClick += dgvAlumnos_CellContentDoubleClick;
+            // 
+            // btnImportar
+            // 
+            btnImportar.Location = new Point(634, 32);
+            btnImportar.Name = "btnImportar";
+            btnImportar.Size = new Size(102, 36);
+            btnImportar.TabIndex = 4;
+            btnImportar.Text = "Importar";
+            btnImportar.UseVisualStyleBackColor = true;
+            btnImportar.Click += btnImportar_Click;
             // 
             // btnEliminar
             // 
@@ -158,16 +169,6 @@
             btnAgregarAlumnos.Text = "Agregar";
             btnAgregarAlumnos.UseVisualStyleBackColor = true;
             btnAgregarAlumnos.Click += btnAgregarAlumnos_Click;
-            // 
-            // btnImportar
-            // 
-            btnImportar.Location = new Point(634, 32);
-            btnImportar.Name = "btnImportar";
-            btnImportar.Size = new Size(102, 36);
-            btnImportar.TabIndex = 4;
-            btnImportar.Text = "Importar";
-            btnImportar.UseVisualStyleBackColor = true;
-            btnImportar.Click += btnImportar_Click;
             // 
             // ofdExcel
             // 

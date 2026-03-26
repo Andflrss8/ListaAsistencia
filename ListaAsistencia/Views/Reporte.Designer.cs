@@ -44,7 +44,7 @@
             dgvCuenta.Name = "dgvCuenta";
             dgvCuenta.ReadOnly = true;
             dgvCuenta.RowHeadersWidth = 51;
-            dgvCuenta.Size = new Size(404, 73);
+            dgvCuenta.Size = new Size(426, 72);
             dgvCuenta.TabIndex = 0;
             // 
             // label1
@@ -60,10 +60,10 @@
             // dgvResumen
             // 
             dgvResumen.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvResumen.Location = new Point(135, 182);
+            dgvResumen.Location = new Point(155, 181);
             dgvResumen.Name = "dgvResumen";
             dgvResumen.RowHeadersWidth = 51;
-            dgvResumen.Size = new Size(351, 188);
+            dgvResumen.Size = new Size(302, 188);
             dgvResumen.TabIndex = 2;
             // 
             // Reporte
@@ -75,7 +75,7 @@
             Controls.Add(label1);
             Controls.Add(dgvCuenta);
             Name = "Reporte";
-            Text = "Reporte";
+            Text = "Resumen de asistencia";
             Load += Reporte_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCuenta).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvResumen).EndInit();

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -19,23 +20,24 @@ namespace ListaAsistencia.Views
         {
             try
             {
-                
+
                 this.lista = lista;
                 InitializeComponent();
                 actualizar();
-                if (dgvAsistencia.RowCount == 0)
+
+
+
+                for (int i = 0; i < lista.Rows.Count; i++)
                 {
-
-
-                    for (int i = 0; i < lista.Rows.Count; i++)
-                    {
-                        dt.ejecutarComando($"Insert into Asistencia(fecha,nControl,vino) values(" +
-                            $"'{dtpFecha.Value.ToShortDateString()}', {lista.Rows[i].Cells[0].Value}, 'NO')");
-                    }
-
-                    actualizar();
+                    dt.ejecutarComando($"Insert into Asistencia(fecha,nControl,vino) values(" +
+                        $"'{dtpFecha.Value.ToShortDateString()}', {lista.Rows[i].Cells[0].Value}, 'NO')");
                 }
+
+
                 actualizar();
+
+
+
             }
             catch (Exception ex)
             {
@@ -70,18 +72,17 @@ namespace ListaAsistencia.Views
         private void dtpFecha_ValueChanged(object sender, EventArgs e)
         {
             actualizar();
-            if (dgvAsistencia.RowCount == 0 || dgvAsistencia.Rows[0].Cells[0].Value == null)
+
+
+            for (int i = 0; i < lista.RowCount; i++)
             {
 
-                for (int i = 0; i < lista.RowCount; i++)
-                {
-
-                    dt.ejecutarComando($"Insert into Asistencia(fecha,nControl,vino) values(" +
-                        $"'{dtpFecha.Value.ToShortDateString()}', {lista.Rows[i].Cells[0].Value}, 'NO')");
-                }
-                dgvAsistencia.Columns.Clear();
-                actualizar();
+                dt.ejecutarComando($"Insert into Asistencia(fecha,nControl,vino) values(" +
+                   $"'{dtpFecha.Value.ToShortDateString()}', {lista.Rows[i].Cells[0].Value}, 'NO')");
             }
+            dgvAsistencia.Columns.Clear();
+            actualizar();
+
 
         }
 
@@ -106,7 +107,7 @@ namespace ListaAsistencia.Views
             try
             {
                 ds = dt.ejecutar($"Select fecha, alu.nControl, concat(nombre,' ',apPaterno,' ',apMaterno) as nombreCompleto " +
-                    $", vino from Asistencia asi left join Alumnos alu on asi.nControl = alu.nControl " +
+                    $", vino as Asistio from Asistencia asi left join Alumnos alu on asi.nControl = alu.nControl " +
                     $"where fecha='{dtpFecha.Value.ToShortDateString()}' and vino='SI'");
 
                 if (ds != null)
@@ -126,7 +127,7 @@ namespace ListaAsistencia.Views
             try
             {
                 ds = dt.ejecutar($"Select fecha, alu.nControl, concat(nombre,' ',apPaterno,' ',apMaterno) as nombreCompleto " +
-                    $", vino from Asistencia asi left join Alumnos alu on asi.nControl = alu.nControl " +
+                    $", vino as Asistio from Asistencia asi left join Alumnos alu on asi.nControl = alu.nControl " +
                     $"where fecha='{dtpFecha.Value.ToShortDateString()}' and vino='NO'");
 
                 if (ds != null)
@@ -146,7 +147,7 @@ namespace ListaAsistencia.Views
             try
             {
                 ds = dt.ejecutar($"Select fecha, alu.nControl, concat(nombre,' ',apPaterno,' ',apMaterno) as nombreCompleto " +
-                    $", vino from Asistencia asi left join Alumnos alu on asi.nControl = alu.nControl " +
+                    $", vino as Asistio from Asistencia asi left join Alumnos alu on asi.nControl = alu.nControl " +
                     $"where fecha='{dtpFecha.Value.ToShortDateString()}'");
 
                 if (ds != null)
@@ -161,22 +162,29 @@ namespace ListaAsistencia.Views
             }
         }
 
-        private void btnRegistro_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Reporte reporte = new Reporte(int.Parse(txtRegistro.Text));
-                reporte.Show();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Solo valores numericos");
-            }
-        }
+
 
         private void Asistencia_Load(object sender, EventArgs e)
         {
 
         }
+
+        private void txtRegistro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                try
+                {
+                    Reporte reporte = new Reporte(int.Parse(txtRegistro.Text));
+                    reporte.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Solo valores numericos");
+                }
+            }
+        }
+
+       
     }
 }
