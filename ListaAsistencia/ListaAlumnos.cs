@@ -7,37 +7,26 @@ namespace ListaAsistencia
 {
     public partial class ListaAlumnos : Form
     {
+        //Definicion de Datos y DataSet
         Datos datos = new Datos();
         DataSet ds;
+
+        //Constructor del frame
         public ListaAlumnos()
         {
             InitializeComponent();
-            actualizarToolStripMenuItem_Click(this, new EventArgs());
+            actualizar();
         }
 
+        //Mostrar el frame para agregar alumnos
         private void btnAgregarAlumnos_Click(object sender, EventArgs e)
         {
             RegistroAlumno registro = new RegistroAlumno(this);
             registro.Show();
         }
 
-        private void actualizarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ds = datos.ejecutar("Select * from Alumnos");
-                if (ds != null)
-                {
-                    dgvAlumnos.DataSource = ds.Tables[0];
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ERROR");
-
-            }
-        }
-
+     
+        //Actualizar el dgv
         public void actualizar()
         {
             try
@@ -55,6 +44,7 @@ namespace ListaAsistencia
             }
         }
 
+        //Muestra el frame para actualizar
         private void dgvAlumnos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             RegistroAlumno actualizacion = new RegistroAlumno(Convert.ToInt32(dgvAlumnos.CurrentRow.Cells[0].Value), dgvAlumnos.CurrentRow.Cells[1].Value.ToString(),
@@ -63,11 +53,13 @@ namespace ListaAsistencia
             actualizacion.Show();
         }
 
+        //Cerrar el programa
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //Eliminar un registro
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
@@ -87,15 +79,17 @@ namespace ListaAsistencia
             }
         }
 
+        //Mostrar el frame de asistencia
         private void asistenciaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Asistencia asistencia = new Asistencia(this.dgvAlumnos);
             asistencia.Show();
         }
 
+        //Consulta en forma de una barra de busqueda
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            ds = datos.ejecutar($"select * from Alumnos where nombre like('{txtBuscar.Text}%') or apPaterno like('{txtBuscar.Text}%') or apMaterno like('{txtBuscar.Text}%')");
+            ds = datos.ejecutar($"select * from Alumnos where cast(nControl as char) like('{txtBuscar.Text}%') or nombre like('{txtBuscar.Text}%') or apPaterno like('{txtBuscar.Text}%') or apMaterno like('{txtBuscar.Text}%')");
             if (ds != null)
             {
                 dgvAlumnos.DataSource = ds.Tables[0];
@@ -107,6 +101,7 @@ namespace ListaAsistencia
 
         }
 
+        //Importar desde un excel
         private void btnImportar_Click(object sender, EventArgs e)
         {
             string path;

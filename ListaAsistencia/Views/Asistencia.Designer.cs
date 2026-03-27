@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             splitContainer1 = new SplitContainer();
+            btnResumen = new Button();
             label2 = new Label();
             txtRegistro = new TextBox();
             gbBotones = new GroupBox();
@@ -38,7 +39,6 @@
             label1 = new Label();
             dtpFecha = new DateTimePicker();
             dgvAsistencia = new DataGridView();
-            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -51,12 +51,13 @@
             // 
             splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.Location = new Point(0, 0);
+            splitContainer1.Margin = new Padding(3, 2, 3, 2);
             splitContainer1.Name = "splitContainer1";
             splitContainer1.Orientation = Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(label3);
+            splitContainer1.Panel1.Controls.Add(btnResumen);
             splitContainer1.Panel1.Controls.Add(label2);
             splitContainer1.Panel1.Controls.Add(txtRegistro);
             splitContainer1.Panel1.Controls.Add(gbBotones);
@@ -66,25 +67,38 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(dgvAsistencia);
-            splitContainer1.Size = new Size(800, 450);
-            splitContainer1.SplitterDistance = 172;
+            splitContainer1.Size = new Size(700, 338);
+            splitContainer1.SplitterDistance = 129;
+            splitContainer1.SplitterWidth = 3;
             splitContainer1.TabIndex = 0;
+            // 
+            // btnResumen
+            // 
+            btnResumen.Location = new Point(318, 83);
+            btnResumen.Margin = new Padding(3, 2, 3, 2);
+            btnResumen.Name = "btnResumen";
+            btnResumen.Size = new Size(153, 22);
+            btnResumen.TabIndex = 6;
+            btnResumen.Text = "Resumen de alumno";
+            btnResumen.UseVisualStyleBackColor = true;
+            btnResumen.Click += btnResumen_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 7.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label2.Location = new Point(51, 141);
+            label2.Location = new Point(45, 106);
             label2.Name = "label2";
-            label2.Size = new Size(146, 17);
+            label2.Size = new Size(123, 13);
             label2.TabIndex = 5;
             label2.Text = "(Solo numero de control)";
             // 
             // txtRegistro
             // 
-            txtRegistro.Location = new Point(51, 111);
+            txtRegistro.Location = new Point(45, 83);
+            txtRegistro.Margin = new Padding(3, 2, 3, 2);
             txtRegistro.Name = "txtRegistro";
-            txtRegistro.Size = new Size(274, 27);
+            txtRegistro.Size = new Size(240, 23);
             txtRegistro.TabIndex = 3;
             txtRegistro.KeyPress += txtRegistro_KeyPress;
             // 
@@ -93,9 +107,11 @@
             gbBotones.Controls.Add(rbTodos);
             gbBotones.Controls.Add(rbNoAsistio);
             gbBotones.Controls.Add(rbAsistio);
-            gbBotones.Location = new Point(384, 46);
+            gbBotones.Location = new Point(351, 18);
+            gbBotones.Margin = new Padding(3, 2, 3, 2);
             gbBotones.Name = "gbBotones";
-            gbBotones.Size = new Size(377, 80);
+            gbBotones.Padding = new Padding(3, 2, 3, 2);
+            gbBotones.Size = new Size(330, 60);
             gbBotones.TabIndex = 2;
             gbBotones.TabStop = false;
             gbBotones.Text = "Filtrar:";
@@ -103,9 +119,10 @@
             // rbTodos
             // 
             rbTodos.AutoSize = true;
-            rbTodos.Location = new Point(243, 26);
+            rbTodos.Location = new Point(213, 20);
+            rbTodos.Margin = new Padding(3, 2, 3, 2);
             rbTodos.Name = "rbTodos";
-            rbTodos.Size = new Size(70, 24);
+            rbTodos.Size = new Size(57, 19);
             rbTodos.TabIndex = 2;
             rbTodos.TabStop = true;
             rbTodos.Text = "Todos";
@@ -115,9 +132,10 @@
             // rbNoAsistio
             // 
             rbNoAsistio.AutoSize = true;
-            rbNoAsistio.Location = new Point(125, 25);
+            rbNoAsistio.Location = new Point(109, 19);
+            rbNoAsistio.Margin = new Padding(3, 2, 3, 2);
             rbNoAsistio.Name = "rbNoAsistio";
-            rbNoAsistio.Size = new Size(98, 24);
+            rbNoAsistio.Size = new Size(79, 19);
             rbNoAsistio.TabIndex = 1;
             rbNoAsistio.TabStop = true;
             rbNoAsistio.Text = "No Asistio";
@@ -127,9 +145,10 @@
             // rbAsistio
             // 
             rbAsistio.AutoSize = true;
-            rbAsistio.Location = new Point(28, 26);
+            rbAsistio.Location = new Point(24, 20);
+            rbAsistio.Margin = new Padding(3, 2, 3, 2);
             rbAsistio.Name = "rbAsistio";
-            rbAsistio.Size = new Size(74, 24);
+            rbAsistio.Size = new Size(60, 19);
             rbAsistio.TabIndex = 0;
             rbAsistio.TabStop = true;
             rbAsistio.Text = "Asistio";
@@ -139,18 +158,19 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(42, 24);
+            label1.Location = new Point(37, 18);
             label1.Name = "label1";
-            label1.Size = new Size(94, 20);
+            label1.Size = new Size(75, 15);
             label1.TabIndex = 1;
             label1.Text = "Asistencia al:";
             // 
             // dtpFecha
             // 
             dtpFecha.Checked = false;
-            dtpFecha.Location = new Point(40, 46);
+            dtpFecha.Location = new Point(35, 34);
+            dtpFecha.Margin = new Padding(3, 2, 3, 2);
             dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(285, 27);
+            dtpFecha.Size = new Size(250, 23);
             dtpFecha.TabIndex = 0;
             dtpFecha.ValueChanged += dtpFecha_ValueChanged;
             // 
@@ -159,30 +179,22 @@
             dgvAsistencia.AllowUserToAddRows = false;
             dgvAsistencia.AllowUserToDeleteRows = false;
             dgvAsistencia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAsistencia.Dock = DockStyle.Fill;
-            dgvAsistencia.Location = new Point(0, 0);
+            dgvAsistencia.Location = new Point(105, 0);
+            dgvAsistencia.Margin = new Padding(3, 2, 3, 2);
             dgvAsistencia.Name = "dgvAsistencia";
             dgvAsistencia.ReadOnly = true;
             dgvAsistencia.RowHeadersWidth = 51;
-            dgvAsistencia.Size = new Size(800, 274);
+            dgvAsistencia.Size = new Size(492, 206);
             dgvAsistencia.TabIndex = 0;
-            dgvAsistencia.CellContentDoubleClick += dgvAsistencia_CellContentDoubleClick;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(51, 88);
-            label3.Name = "label3";
-            label3.Size = new Size(201, 20);
-            label3.TabIndex = 6;
-            label3.Text = "Obtener resumen de alumno:";
+            dgvAsistencia.CellClick += dgvAsistencia_CellClick;
             // 
             // Asistencia
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(splitContainer1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Asistencia";
             Text = "Asistencia";
             Load += Asistencia_Load;
@@ -209,6 +221,6 @@
         private RadioButton rbAsistio;
         private Label label2;
         private TextBox txtRegistro;
-        private Label label3;
+        private Button btnResumen;
     }
 }

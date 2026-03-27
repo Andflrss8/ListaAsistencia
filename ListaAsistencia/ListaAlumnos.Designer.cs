@@ -91,7 +91,6 @@
             // splitContainer1.Panel1
             // 
             splitContainer1.Panel1.Controls.Add(dgvAlumnos);
-          
             // 
             // splitContainer1.Panel2
             // 
@@ -110,13 +109,12 @@
             dgvAlumnos.AllowUserToAddRows = false;
             dgvAlumnos.AllowUserToDeleteRows = false;
             dgvAlumnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAlumnos.Dock = DockStyle.Fill;
-            dgvAlumnos.Location = new Point(0, 0);
+            dgvAlumnos.Location = new Point(73, 4);
             dgvAlumnos.Margin = new Padding(3, 4, 3, 4);
             dgvAlumnos.Name = "dgvAlumnos";
             dgvAlumnos.ReadOnly = true;
             dgvAlumnos.RowHeadersWidth = 51;
-            dgvAlumnos.Size = new Size(800, 316);
+            dgvAlumnos.Size = new Size(554, 316);
             dgvAlumnos.TabIndex = 0;
             dgvAlumnos.CellContentDoubleClick += dgvAlumnos_CellContentDoubleClick;
             // 
@@ -183,7 +181,7 @@
             Controls.Add(msOpciones);
             MainMenuStrip = msOpciones;
             Name = "ListaAlumnos";
-            Text = "ListaAsistencia";
+            Text = "ListaAlumnos";
             msOpciones.ResumeLayout(false);
             msOpciones.PerformLayout();
             splitContainer1.Panel1.ResumeLayout(false);

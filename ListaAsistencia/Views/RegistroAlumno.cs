@@ -16,12 +16,15 @@ namespace ListaAsistencia.Views
         bool update = false;
         Datos dt = new Datos();
         ListaAlumnos lista;
+
+        //Constructor vinculado unicamente con el frame principal
         public RegistroAlumno(ListaAlumnos lista)
         {
             InitializeComponent();
             this.lista = lista;
         }
 
+        //Constructor que toma los datos del alumno para actualizarlos
         public RegistroAlumno(int nC, string nombre, string apPat, string apMat, ListaAlumnos lista)
         {
             InitializeComponent();
@@ -40,10 +43,12 @@ namespace ListaAsistencia.Views
 
         }
 
+        //Confirmar actualizacion o creacion de un nuevo alumno
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             try
             {
+                //Insercion de alumno
                 if (update == false)
                 {
                     bool resultado = dt.ejecutarComando(
@@ -61,6 +66,7 @@ namespace ListaAsistencia.Views
                         MessageBox.Show("Error al agregar alumno");
                     }
                 }
+                //Actualizacion de alumno
                 else
                 {
                     bool resultado = dt.ejecutarComando(
